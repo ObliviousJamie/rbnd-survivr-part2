@@ -11,14 +11,14 @@ class Game
         @tribes << new_tribe
     end
 
-    #Random loser
+    #Random winner
     def immunity_challenge
         @tribes.sample 
     end
 
-    #Random contestent loser
+    #Random contestent winner
     def individual_immunity_challenge
-        concat_tribes.members.sample 
+        @tribe_1.members.sample 
     end
 
     def clear_tribes
@@ -38,7 +38,7 @@ class Game
         @tribes.each do |tribe|
             members.concat tribe.members
         end
-        Tribe.new(name: new_tribe, members: members)  
+        @tribe_1 = Tribe.new(name: new_tribe, members: members)  
     end
 
 end

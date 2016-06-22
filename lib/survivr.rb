@@ -20,12 +20,39 @@ require_relative "jury"
 
 #This is where you will write your code for the three phases
 def phase_one
+    eliminated = 0
+    #Immunity game
+    8.times do |x| 
+        eliminated += 1
+        winner = @borneo.immunity_challenge
+        #Tribe council for loser
+        @borneo.tribes.select {|tribe| tribe != winner}.each do |losing|
+            losing.tribal_council
+        end
+    end
+    return eliminated
 end
 
 def phase_two
+    eliminated = 0
+    3.times do |x|
+        eliminated +=1
+        winner = @borneo.individual_immunity_challenge
+        @merge_tribe.tribal_council immune: winner
+    end
+    return eliminated
 end
 
 def phase_three
+    eliminated = 0
+    7.times do |x|
+        eliminated +=1
+        winner = @borneo.individual_immunity_challenge
+        jury_member = @merge_tribe.tribal_council immune: winner
+        @jury.add_member jury_member
+    end
+    return eliminated
+
 end
 
 
