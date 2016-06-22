@@ -2,8 +2,10 @@ require_relative "game"
 require_relative "tribe"
 require_relative "contestant"
 require_relative "jury"
+require 'colorizr'
 
-@divider = "=" * 4
+String.create_colors
+@divider = ("=" * 4).yellow
 
 #After your tests pass, uncomment this code below
 #=========================================================
@@ -20,7 +22,7 @@ require_relative "jury"
 #=========================================================
 
 def notify_phase(phase)
-    puts "#{@divider} Phase #{phase} commences #{@divider}"
+    puts "#{@divider} Phase #{phase.light_blue} commences #{@divider}"
 end
 
 #This is where you will write your code for the three phases

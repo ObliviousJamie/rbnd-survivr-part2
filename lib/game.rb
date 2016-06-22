@@ -33,6 +33,8 @@ class Game
         return tribe
     end
 
+    #Merges tribes together with a new name which is blank by default
+    #tribe_1 variable is now the new tribe
     def concat_tribes(new_tribe = "")
         members = Array.new
         @tribes.each do |tribe|

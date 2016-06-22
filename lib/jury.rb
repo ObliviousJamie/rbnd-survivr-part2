@@ -29,7 +29,7 @@ class Jury
         @members.each do |member|
             voting_for = votes.keys.sample
             votes[voting_for] += 1
-            puts "#{member.name} votes for #{voting_for}"
+            puts "#{member.name.pink} votes for #{voting_for.name.light_grey}"
         end
         return votes
     end
@@ -44,7 +44,7 @@ class Jury
     #Winner is printed to terminal
     def announce_winner(final_votes)
         winner = final_votes.max_by{|key,value| value}[0]
-        notify_to_terminal divide: "-"*4, string: "Winner is... #{winner}!"
+        notify_to_terminal divide: "-"*4, string: "Winner is... #{winner.name.green}!"
         return winner
     end
 

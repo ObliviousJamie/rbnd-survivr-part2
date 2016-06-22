@@ -5,7 +5,7 @@ class Tribe
         @name = options[:name]
         @members = options[:members]
 
-        puts "Tribe #{@name} created"
+        puts "Tribe #{@name.red} created"
     end
 
     #Tribal council removes a member from the tribe who is not immune
@@ -15,7 +15,7 @@ class Tribe
         options[:immune] ? immune = options[:immune] : immune = "None"
         victim = @members.sample
         (victim = @members.sample) until victim != immune
-        puts "#{divider} #{victim.name} has been voted out! Member who has immunity: #{immune} #{divider}"
+        puts "#{divider} #{victim.name.pink} has been voted out! Member who has immunity: #{immune.name.blue unless immune == "None"} #{divider}"
         @members.delete(victim)
     end
 
