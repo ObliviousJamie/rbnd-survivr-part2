@@ -6,11 +6,18 @@ class Jury
         @members = Array.new
     end
 
+    def notify_to_terminal(options={})
+        divider = options[:divide]
+        string = options[:string]
+        puts "#{divider} #{string} #{divider} "
+    end
+
     def add_member(member)
         @members << member
     end
 
     def cast_votes(finalist)
+        notify_to_terminal divide: "="*4, string: "Voting for finalist commences!"
         votes = Hash.new{|hash, key| hash[key] = 0}
         #Adding each finalist to a hash for voting process
         finalist.each do |final|
@@ -27,13 +34,16 @@ class Jury
     end
 
     def report_votes(final_votes)
+        notify_to_terminal divide: "+"*4, string: "Votes have been counted!"
         final_votes.each do |finalist|
             puts "#{finalist[0]} has #{finalist[1]} votes" 
         end
     end
 
     def announce_winner(final_votes)
-        final_votes.max_by{|key,value| value}[0]
+        winner = final_votes.max_by{|key,value| value}[0]
+        notify_to_terminal divide: "-"*4, string: "Winner is... #{winner}!"
+        return winner
     end
 
 

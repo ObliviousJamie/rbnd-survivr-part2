@@ -3,6 +3,8 @@ require_relative "tribe"
 require_relative "contestant"
 require_relative "jury"
 
+@divider = "=" * 4
+
 #After your tests pass, uncomment this code below
 #=========================================================
  # Create an array of twenty hopefuls to compete on the island of Borneo
@@ -17,9 +19,13 @@ require_relative "jury"
  @borneo = Game.new(@coyopa, @hunapu)
 #=========================================================
 
+def notify_phase(phase)
+    puts "#{@divider} Phase #{phase} commences #{@divider}"
+end
 
 #This is where you will write your code for the three phases
 def phase_one
+    notify_phase "One"
     eliminated = 0
     #Immunity game
     8.times do |x| 
@@ -34,6 +40,7 @@ def phase_one
 end
 
 def phase_two
+    notify_phase "Two"
     eliminated = 0
     3.times do |x|
         eliminated +=1
@@ -44,6 +51,7 @@ def phase_two
 end
 
 def phase_three
+    notify_phase "Three"
     eliminated = 0
     7.times do |x|
         eliminated +=1
